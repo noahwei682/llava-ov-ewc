@@ -689,13 +689,13 @@ class LLaVATrainerWithEWC(LLaVATrainer):
                 self.fisher_dict, self.optpar_dict = self.compute_fisher(self.model)
                 
                 if not self.fisher_dict:
-                    print("⚠️ Disabling EWC - empty Fisher matrix")
+                    # print("⚠️ Disabling EWC - empty Fisher matrix")
                     self.use_ewc = False
                 else:
                     print(f"✅ EWC initialized with {len(self.fisher_dict)} parameters")
                     
             except Exception as e:
-                print(f"❌ EWC initialization error: {str(e)}")
+                # print(f"❌ EWC initialization error: {str(e)}")
                 self.use_ewc = False
 
         return super().train(*args, **kwargs)
