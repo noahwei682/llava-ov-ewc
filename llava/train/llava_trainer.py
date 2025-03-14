@@ -588,7 +588,7 @@ class LLaVATrainerWithEWC(LLaVATrainer):
             3. Inspect model architecture: Are there unexpected parameter freezing?
             """)
             
-        print(f"✅ Found {len(trainable_params)} trainable parameters")
+        # print(f"✅ Found {len(trainable_params)} trainable parameters")
 
     def _select_parameters(self, model):
         """Three-stage parameter selection with detailed logging"""
@@ -629,9 +629,9 @@ class LLaVATrainerWithEWC(LLaVATrainer):
 
         # Generate debug report
         print("\n🔍 Selection Diagnostics:")
-        print(f"Total parameters: {sum(1 for _ in model.parameters())}")
-        print(f"Exclusion reasons: {dict(exclusion_reasons)}")
-        print(f"Selected parameters: {len(selected)}")
+        # print(f"Total parameters: {sum(1 for _ in model.parameters())}")
+        # print(f"Exclusion reasons: {dict(exclusion_reasons)}")
+        # print(f"Selected parameters: {len(selected)}")
         
         return selected
 
@@ -692,7 +692,8 @@ class LLaVATrainerWithEWC(LLaVATrainer):
                     # print("⚠️ Disabling EWC - empty Fisher matrix")
                     self.use_ewc = False
                 else:
-                    print(f"✅ EWC initialized with {len(self.fisher_dict)} parameters")
+                    # print(f"✅ EWC initialized with {len(self.fisher_dict)} parameters")
+                    pass
                     
             except Exception as e:
                 # print(f"❌ EWC initialization error: {str(e)}")
