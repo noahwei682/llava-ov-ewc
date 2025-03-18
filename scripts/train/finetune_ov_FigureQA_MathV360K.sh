@@ -12,7 +12,7 @@
 # export MASTER_PORT=23456 
 
 
-LLM_VERSION="lmms-lab/llava-onevision-qwen2-7b-ov" 
+LLM_VERSION="lmms-lab/llava-onevision-qwen2-7b-si" 
 # for 7b model we recommend bs=1, accum=2, 16 nodes, 128 gpus, lr=1e-5, warmup=0.03
 # for 72b model we recommend bs=1, accum=1, 32 nodes, 256 gpus, lr=1e-5, warmup=0.03
 LLM_VERSION_CLEAN="${LLM_VERSION//\//_}"
@@ -33,7 +33,7 @@ echo "BASE_RUN_NAME: ${BASE_RUN_NAME}"
 # Stage 2
 PROMPT_VERSION="qwen_1_5"
 RUN_NAME="llava-onevision-${VISION_MODEL_VERSION_CLEAN}-${LLM_VERSION_CLEAN}-ewc-stage-lambda-1" 
-PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-ov" # replace it with your last checkpoint training from single image collection
+PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-si" # replace it with your last checkpoint training from single image collection
 echo "PREV_STAGE_CHECKPOINT: ${PREV_STAGE_CHECKPOINT}"
 echo "MID_RUN_NAME: ${RUN_NAME}"
 
