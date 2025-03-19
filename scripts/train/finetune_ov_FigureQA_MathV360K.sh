@@ -10,9 +10,15 @@
 # export NODE_RANK=0 
 # export MASTER_ADDR=172.17.100.112 
 # export MASTER_PORT=23456 
+# export RUN_NAME=llava-onevision-google-siglip-so400m-patch14-384-lmms-lab-llava-onevision-qwen2-7b-si-ewc-stage-lambda-1
+# export OUTPUT_DIR=/blob/weiwei/llava_checkpoint/$RUN_NAME
+# export RUN_NAME="llava-onevision-google-siglip-so400m-patch14-384-lmms-lab-llava-onevision-qwen2-7b-si-ewc-stage-lambda-1"
+# export OUTPUT_DIR="/blob/weiwei/llava_checkpoint/$RUN_NAME"
+# export PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-si"
+# export VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
 
 
-LLM_VERSION="lmms-lab/llava-onevision-qwen2-7b-si" 
+# LLM_VERSION="lmms-lab/llava-onevision-qwen2-7b-si" 
 # for 7b model we recommend bs=1, accum=2, 16 nodes, 128 gpus, lr=1e-5, warmup=0.03
 # for 72b model we recommend bs=1, accum=1, 32 nodes, 256 gpus, lr=1e-5, warmup=0.03
 LLM_VERSION_CLEAN="${LLM_VERSION//\//_}"
@@ -32,7 +38,7 @@ echo "BASE_RUN_NAME: ${BASE_RUN_NAME}"
 
 # Stage 2
 PROMPT_VERSION="qwen_1_5"
-RUN_NAME="llava-onevision-${VISION_MODEL_VERSION_CLEAN}-${LLM_VERSION_CLEAN}-ewc-stage-lambda-1" 
+# RUN_NAME="llava-onevision-${VISION_MODEL_VERSION_CLEAN}-${LLM_VERSION_CLEAN}-ewc-stage-lambda-1" 
 PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-si" # replace it with your last checkpoint training from single image collection
 echo "PREV_STAGE_CHECKPOINT: ${PREV_STAGE_CHECKPOINT}"
 echo "MID_RUN_NAME: ${RUN_NAME}"
@@ -47,7 +53,7 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node $NPROC_PER_NODE --nnodes $NO
     --image_folder ./download_data/mydatasets/llava_onevision/images/FigureQA_MathV360K \
     --mm_tunable_parts="mm_vision_tower,mm_mlp_adapter,mm_language_model" \
     --mm_vision_tower_lr=2e-6 \
-    --vision_tower ${VISION_MODEL_VERSION} \
+    --vision_tower $VISION_MODEL_VERSION \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
@@ -58,7 +64,7 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node $NPROC_PER_NODE --nnodes $NO
     --mm_patch_merge_type spatial_unpad \
     --bf16 True \
     --run_name $RUN_NAME \
-    --output_dir ./output_dir/checkpoints/onevision/$RUN_NAME \
+    --output_dir $OUTPUT_DIR \
     --num_train_epochs 1 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 1 \
