@@ -1,3 +1,15 @@
+# data merge
+mkdir /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/merged_images
+
+cp /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/chrome_writting/* \
+   /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/merged_images/
+
+cp /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/ai2d_internvl/* \
+   /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/merged_images/
+
+cp /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/allava_instruct_laion4v/* \
+   /home/aiscuser/lmms-eval/LLaVA-NeXT/mydatasets/llava_onevision/merged_images/
+
 # export OMP_NUM_THREADS=8
 # export NCCL_IB_DISABLE=0
 # export NCCL_IB_GID_INDEX=3
