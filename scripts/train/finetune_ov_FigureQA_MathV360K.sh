@@ -71,7 +71,7 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node $NPROC_PER_NODE --nnodes $NO
     --gradient_accumulation_steps 2 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
-    --save_steps 1000 \
+    --save_steps 10 \
     --save_total_limit 1 \
     --learning_rate 1e-5 \
     --weight_decay 0. \
