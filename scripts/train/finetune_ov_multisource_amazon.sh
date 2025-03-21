@@ -106,7 +106,7 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node $NPROC_PER_NODE --nnodes $NO
     --dataloader_drop_last True \
     --frames_upbound 32 \
     --use_ewc true \
-    --ewc_lambda 1
+    --ewc_lambda 0.1
 exit 0;
 
     # --data_path "/home/aiscuser/dataset/Amazon/{meta_All_Beauty_exist_gene_ITdata,meta_Appliances_exist_gene_ITdata,meta_Arts_Crafts_and_Sewing_exist_gene_ITdata,meta_Beauty_and_Personal_Care_exist_gene_ITdata,meta_Cell_Phones_and_Accessories_exist_gene_ITdata,meta_Digital_Music_exist_gene_ITdata,meta_Electronics_exist_gene_ITdata,meta_Gift_Cards_exist_gene_ITdata,meta_Grocery_and_Gourmet_Food_exist_gene_ITdata,meta_Health_and_Household_exist_gene_ITdata,meta_Industrial_and_Scientific_exist_gene_ITdata,meta_Magazine_Subscriptions_exist_gene_ITdata,meta_Movies_and_TV_exist_gene_ITdata,meta_Patio_Lawn_and_Garden_exist_gene_ITdata,meta_Sports_and_Outdoors_exist_gene_ITdata,meta_Subscription_Boxes_exist_gene_ITdata,meta_Toys_and_Games_exist_gene_ITdata}.json" \
